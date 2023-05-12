@@ -34,17 +34,28 @@ const App = () => {
     // console.log(text)
   }
 
+  const onSendMessage = (message) => {
+    const newMessages = messages
+    newMessages.push({
+      text: message,
+      member: member
+    })
+    setMessages(newMessages)
+    //console.log(messages)
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setText('');
+    onSendMessage(text)
+  }
+
   return (
     <>
       <ul>
-        {messages.map((m) => <li key={key()}>{m.text}</li>)}
+        {messages.map((m) => <li key={key()}>{m.text} {m.member.username}</li>)}
       </ul>
-  
-      {member.username} 
-      <br />
-      {member.color}
-
-      <form>
+      <form onSubmit={onSubmit}>
         <input
           onChange={onChange}
           value={text}
