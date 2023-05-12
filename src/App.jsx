@@ -5,15 +5,7 @@ import { v4 as key } from 'uuid';
 import './App.css'
 
 const App = () => {
-  const [messages, setMessages] = useState([
-    {
-      text: "This is a test message!",
-      member: {
-        color: "blue",
-        username: "bluemoon"
-      }
-    }
-  ])
+  const [messages, setMessages] = useState([])
 
   const [member, setMember] = useState({
     username: randomName(),
@@ -41,15 +33,16 @@ const App = () => {
         if (error) {
           console.error(error);
         } else {
-          // setMember((prevMember) => ({
-          //   ...prevMember,
-          //   id: drone.clientId,
-          // }));
           const prevMember = { ...member };
           prevMember.id = drone.clientId;
           setMember(prevMember);
           //console.log(member)
         }
+      });
+
+      room.on("data", (message, member) => {
+        const newMessage = { text: message, member: member };
+        setMessages(prevMessages => [...prevMessages, newMessage]);
       });
     }
   }, [drone]);
@@ -60,16 +53,15 @@ const App = () => {
   }
 
   const onSendMessage = (message) => {
-    // const newMessages = messages
-    // newMessages.push({
-    //   text: message,
+    drone.publish({
+      room: "observable-room",
+      message,
+    });
+    // const newMessages = [...messages, {
+    //   text: message, 
     //   member: member
-    // })
-    const newMessages = [...messages, {
-      text: message, 
-      member: member
-    }];
-    setMessages(newMessages)
+    // }];
+    // setMessages(newMessages)
     //console.log(messages)
   }
 
@@ -82,7 +74,7 @@ const App = () => {
   return (
     <>
       <ul>
-        {messages.map((m) => <li key={key()}>{m.text} {m.member.username}</li>)}
+        {messages.map((m) => <li key={key()}>{m.text} {m.member.clientData.username} </li>)}
       </ul>
       <form onSubmit={onSubmit}>
         <input
