@@ -35,11 +35,15 @@ const App = () => {
   }
 
   const onSendMessage = (message) => {
-    const newMessages = messages
-    newMessages.push({
-      text: message,
+    // const newMessages = messages
+    // newMessages.push({
+    //   text: message,
+    //   member: member
+    // })
+    const newMessages = [...messages, {
+      text: message, 
       member: member
-    })
+    }];
     setMessages(newMessages)
     //console.log(messages)
   }
