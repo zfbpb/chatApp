@@ -20,12 +20,19 @@ const App = () => {
     color: randomColor(),
   })
 
+  const [text, setText] = useState('');
+
   useEffect(() => {
     const drone = new window.Scaledrone(import.meta.env.VITE_API_KEY, {
       data: member,
     });
-    console.log(drone)
+    // console.log(drone)
   }, []);
+
+  const onChange = (e) => {
+    setText(e.target.value)
+    // console.log(text)
+  }
 
   return (
     <>
@@ -36,6 +43,16 @@ const App = () => {
       {member.username} 
       <br />
       {member.color}
+
+      <form>
+        <input
+          onChange={onChange}
+          value={text}
+          type='text'
+          placeholder='Enter message'
+        />
+        <button>Send</button>
+      </form>
     </>
   )
 }
