@@ -22,12 +22,37 @@ const App = () => {
 
   const [text, setText] = useState('');
 
+  const [drone, setDrone] = useState(null);
+
   useEffect(() => {
-    const drone = new window.Scaledrone(import.meta.env.VITE_API_KEY, {
+    const newDrone = new window.Scaledrone(import.meta.env.VITE_API_KEY, {
       data: member,
     });
+
+    setDrone(newDrone)
     // console.log(drone)
   }, []);
+
+  useEffect(() => {
+    if (drone) {
+      const room = drone.subscribe("observable-room");
+
+      drone.on("open", (error) => {
+        if (error) {
+          console.error(error);
+        } else {
+          // setMember((prevMember) => ({
+          //   ...prevMember,
+          //   id: drone.clientId,
+          // }));
+          const prevMember = { ...member };
+          prevMember.id = drone.clientId;
+          setMember(prevMember);
+          //console.log(member)
+        }
+      });
+    }
+  }, [drone]);
 
   const onChange = (e) => {
     setText(e.target.value)
