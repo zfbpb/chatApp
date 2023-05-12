@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import randomColor from './util/randomColor'
 import randomName from './util/randomName'
+import { v4 as key } from 'uuid';
 import './App.css'
 
 const App = () => {
@@ -29,7 +30,7 @@ const App = () => {
   return (
     <>
       <ul>
-        {messages.map((m) => <li>{m.text}</li>)}
+        {messages.map((m) => <li key={key()}>{m.text}</li>)}
       </ul>
   
       {member.username} 
