@@ -5,15 +5,7 @@ import { v4 as key } from 'uuid';
 import './App.css'
 
 const App = () => {
-  const [messages, setMessages] = useState([
-    {
-      text: "This is a test message!",
-      member: {
-        color: "blue",
-        username: "bluemoon"
-      }
-    }
-  ])
+  const [messages, setMessages] = useState([])
 
   const [member, setMember] = useState({
     username: randomName(),
@@ -22,29 +14,69 @@ const App = () => {
 
   const [text, setText] = useState('');
 
+  const [drone, setDrone] = useState(null);
+
   useEffect(() => {
-    const drone = new window.Scaledrone(import.meta.env.VITE_API_KEY, {
+    const newDrone = new window.Scaledrone(import.meta.env.VITE_API_KEY, {
       data: member,
     });
+
+    setDrone(newDrone)
     // console.log(drone)
   }, []);
+
+  useEffect(() => {
+    if (drone) {
+      const room = drone.subscribe("observable-room");
+
+      drone.on("open", (error) => {
+        if (error) {
+          console.error(error);
+        } else {
+          const prevMember = { ...member };
+          prevMember.id = drone.clientId;
+          setMember(prevMember);
+          //console.log(member)
+        }
+      });
+
+      room.on("data", (message, member) => {
+        const newMessage = { text: message, member: member };
+        setMessages(prevMessages => [...prevMessages, newMessage]);
+      });
+    }
+  }, [drone]);
 
   const onChange = (e) => {
     setText(e.target.value)
     // console.log(text)
   }
 
+  const onSendMessage = (message) => {
+    drone.publish({
+      room: "observable-room",
+      message,
+    });
+    // const newMessages = [...messages, {
+    //   text: message, 
+    //   member: member
+    // }];
+    // setMessages(newMessages)
+    //console.log(messages)
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setText('');
+    onSendMessage(text)
+  }
+
   return (
     <>
       <ul>
-        {messages.map((m) => <li key={key()}>{m.text}</li>)}
+        {messages.map((m) => <li key={key()}>{m.text} {m.member.clientData.username} </li>)}
       </ul>
-  
-      {member.username} 
-      <br />
-      {member.color}
-
-      <form>
+      <form onSubmit={onSubmit}>
         <input
           onChange={onChange}
           value={text}
