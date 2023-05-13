@@ -43,6 +43,7 @@ const App = () => {
           text: message, 
           member: member
         };
+        newMessage.fromMe = (member && member.id === drone.clientId) ? true : false;
         setMessages(prevMessages => [...prevMessages, newMessage]);
       });
     }
@@ -57,7 +58,6 @@ const App = () => {
       room: "observable-room",
       message
     });
-    console.log(message)
   }
 
   const onSubmit = (e) => {
@@ -69,7 +69,7 @@ const App = () => {
   return (
     <>
       <ul>
-        {messages.map((m) => <li key={key()}>{m.text} {m.member.clientData.username}{console.log(m)}</li>)}
+        {messages.map((m) => <li key={key()} className={m.fromMe ? 'sent' : 'received'}>{m.text} {m.member.clientData.username}</li>)}
       </ul>
       <form onSubmit={onSubmit}>
         <input
