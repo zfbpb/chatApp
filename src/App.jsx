@@ -22,7 +22,6 @@ const App = () => {
     });
 
     setDrone(newDrone)
-    // console.log(drone)
   }, []);
 
   useEffect(() => {
@@ -36,12 +35,14 @@ const App = () => {
           const prevMember = { ...member };
           prevMember.id = drone.clientId;
           setMember(prevMember);
-          //console.log(member)
         }
       });
 
       room.on("data", (message, member) => {
-        const newMessage = { text: message, member: member };
+        const newMessage = { 
+          text: message, 
+          member: member
+        };
         setMessages(prevMessages => [...prevMessages, newMessage]);
       });
     }
@@ -49,20 +50,14 @@ const App = () => {
 
   const onChange = (e) => {
     setText(e.target.value)
-    // console.log(text)
   }
 
   const onSendMessage = (message) => {
     drone.publish({
       room: "observable-room",
-      message,
+      message
     });
-    // const newMessages = [...messages, {
-    //   text: message, 
-    //   member: member
-    // }];
-    // setMessages(newMessages)
-    //console.log(messages)
+    console.log(message)
   }
 
   const onSubmit = (e) => {
@@ -74,7 +69,7 @@ const App = () => {
   return (
     <>
       <ul>
-        {messages.map((m) => <li key={key()}>{m.text} {m.member.clientData.username} </li>)}
+        {messages.map((m) => <li key={key()}>{m.text} {m.member.clientData.username}{console.log(m)}</li>)}
       </ul>
       <form onSubmit={onSubmit}>
         <input
