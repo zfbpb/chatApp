@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import randomColor from './util/randomColor'
 import randomName from './util/randomName'
-import { v4 as key } from 'uuid';
+import Chat from './components/Chat';
 import './App.css'
 
 const App = () => {
@@ -67,10 +67,8 @@ const App = () => {
   }
 
   return (
-    <>
-      <ul>
-        {messages.map((m) => <li key={key()} className={m.fromMe ? 'sent' : 'received'}>{m.text} {m.member.clientData.username}</li>)}
-      </ul>
+    <div className='app'>
+      <Chat messages={messages}/>
       <form onSubmit={onSubmit}>
         <input
           onChange={onChange}
@@ -80,7 +78,7 @@ const App = () => {
         />
         <button>Send</button>
       </form>
-    </>
+    </div>
   )
 }
 
