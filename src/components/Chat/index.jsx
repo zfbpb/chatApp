@@ -1,10 +1,15 @@
-import { v4 as key } from 'uuid';
+import ChatCard from '../ChatCard';
+import { v4 as uuid } from 'uuid';
 
 const Chat = ({messages}) => {
+
   return(
     <ul>
-      {messages.map((m) => <li key={key()} className={m.fromMe ? 'sent' : 'received'}>{m.text} {m.member.clientData.username}</li>)}
-  </ul>
+      {
+        messages &&
+        messages.map((m, key) =><ChatCard key={uuid()} m={m}/>)
+      }
+    </ul>
   )
 }
 
