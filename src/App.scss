@@ -1,9 +1,7 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 2rem auto;
   text-align: center;
-  border: 1px solid blue;
+  height: calc(100vh - 4rem);
 }
 
 ul {
@@ -12,8 +10,38 @@ ul {
 }
 
 .app {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 540px;
+  width: 100vw;
+  background-color: gray;
+  height: 100%;
+  overflow: hidden;
 }
+
+.messages {
+  padding-left: 17px;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+  box-sizing: content-box; /* So the width will be 100% + 17px */
+} 
+
+.form {
+  padding: 1rem;
+  margin-top: auto;
+  background-color: red;
+}
+
+.message {
+  margin: 1rem 1rem 1rem auto;
+  border-radius: 1.125rem 1.125rem 0 1.125rem;
+  background: #333;
+  color: white;
+}
+
 .sent {
   color: yellowgreen;
   text-align: left;
@@ -22,4 +50,8 @@ ul {
 .received {
   color: pink;
   text-align: right;
+}
+
+.mojaklasa {
+  border: 3px solid gold;
 }
