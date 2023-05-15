@@ -4,14 +4,12 @@ import { v4 as uuid } from 'uuid';
 const Chat = ({messages}) => {
 
   return(
-    <>
-      <ul>
-        {
-          messages &&
-          messages.map((m, key) =><ChatCard key={uuid()} m={m}/>)
-        }
-      </ul>
-    </>
+    <ul>
+      {
+        messages &&
+        messages.map((m) =><ChatCard key={uuid()} m={m}/>)
+      }
+    </ul>
   )
 }
 
