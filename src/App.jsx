@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import randomColor from './util/randomColor'
 import randomName from './util/randomName'
 import Chat from './components/Chat';
-import './App.css'
+import './App.scss'
 
 const App = () => {
   const [messages, setMessages] = useState([])
