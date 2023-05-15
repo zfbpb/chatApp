@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import randomColor from './util/randomColor'
 import randomName from './util/randomName'
 import Chat from './components/Chat';
+import ChatInput from './components/ChatInput';
 import './App.scss'
 
 const App = () => {
@@ -11,8 +12,6 @@ const App = () => {
     username: randomName(),
     color: randomColor(),
   })
-
-  const [text, setText] = useState('');
 
   const [drone, setDrone] = useState(null);
 
@@ -49,10 +48,6 @@ const App = () => {
     }
   }, [drone]);
 
-  const onChange = (e) => {
-    setText(e.target.value)
-  }
-
   const onSendMessage = (message) => {
     drone.publish({
       room: "observable-room",
@@ -60,24 +55,10 @@ const App = () => {
     });
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setText('');
-    onSendMessage(text)
-  }
-
   return (
     <div className='app'>
       <Chat messages={messages}/>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={text}
-          type='text'
-          placeholder='Enter message'
-        />
-        <button>Send</button>
-      </form>
+      <ChatInput onSendMessage={onSendMessage} />
     </div>
   )
 }
