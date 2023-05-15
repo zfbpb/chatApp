@@ -14,12 +14,13 @@ const ChatInput = ({ onSendMessage }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className='form' onSubmit={onSubmit}>
       <input
         onChange={onChange}
         value={text}
         type='text'
         placeholder='Enter message'
+        autoFocus={true}
       />
       <button>Send</button>
     </form>
