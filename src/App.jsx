@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import randomColor from './util/randomColor'
 import randomName from './util/randomName'
-import { v4 as key } from 'uuid';
-import './App.css'
+import Chat from './components/Chat';
+import ChatInput from './components/ChatInput';
+import './App.scss'
 
 const App = () => {
   const [messages, setMessages] = useState([])
@@ -11,8 +12,6 @@ const App = () => {
     username: randomName(),
     color: randomColor(),
   })
-
-  const [text, setText] = useState('');
 
   const [drone, setDrone] = useState(null);
 
@@ -49,10 +48,6 @@ const App = () => {
     }
   }, [drone]);
 
-  const onChange = (e) => {
-    setText(e.target.value)
-  }
-
   const onSendMessage = (message) => {
     drone.publish({
       room: "observable-room",
@@ -60,27 +55,11 @@ const App = () => {
     });
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    setText('');
-    onSendMessage(text)
-  }
-
   return (
-    <>
-      <ul>
-        {messages.map((m) => <li key={key()} className={m.fromMe ? 'sent' : 'received'}>{m.text} {m.member.clientData.username}</li>)}
-      </ul>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={text}
-          type='text'
-          placeholder='Enter message'
-        />
-        <button>Send</button>
-      </form>
-    </>
+    <div className='app'>
+      <Chat messages={messages}/>
+      <ChatInput onSendMessage={onSendMessage} />
+    </div>
   )
 }
 

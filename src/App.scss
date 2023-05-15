@@ -1,0 +1,25 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  border: 1px solid blue;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.app {
+  border: 1px solid red;
+}
+.sent {
+  color: yellowgreen;
+  text-align: left;
+}
+
+.received {
+  color: pink;
+  text-align: right;
+}
