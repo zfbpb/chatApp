@@ -1,14 +1,12 @@
 .app {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  height: calc(100vh - 4rem);
   max-width: 540px;
   width: 100vw;
-  background-color: gray;
-  height: 100%;
   overflow: hidden;
-
   margin: 2rem auto;
-  text-align: center;
-  height: calc(100vh - 4rem);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  border-radius: 1rem;
+  background-color: #f7f7f7;
 }
