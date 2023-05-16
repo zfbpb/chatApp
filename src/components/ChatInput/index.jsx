@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './ChatInput.scss'
 
 const ChatInput = ({ onSendMessage }) => {
   const [text, setText] = useState('');
@@ -14,16 +15,19 @@ const ChatInput = ({ onSendMessage }) => {
   };
 
   return (
-    <form className='form' onSubmit={onSubmit}>
-      <input
-        onChange={onChange}
-        value={text}
-        type='text'
-        placeholder='Enter message'
-        autoFocus={true}
-      />
-      <button>Send</button>
-    </form>
+    <div className="chat-input">
+      <form className="form" onSubmit={onSubmit}>
+        <input
+          className="input"
+          onChange={onChange}
+          value={text}
+          type="text"
+          placeholder="Enter message"
+          autoFocus={true}
+        />
+        <button className="form__button">Send</button>
+      </form>
+    </div>
   );
 };
 
