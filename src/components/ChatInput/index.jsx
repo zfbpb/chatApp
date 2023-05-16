@@ -18,7 +18,7 @@ const ChatInput = ({ onSendMessage }) => {
     <div className="chat-input">
       <form className="form" onSubmit={onSubmit}>
         <input
-          className="input"
+          className="form__input"
           onChange={onChange}
           value={text}
           type="text"

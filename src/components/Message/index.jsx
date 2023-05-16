@@ -1,11 +1,11 @@
 import './message.scss'
 
-const ChatCard = ({m}) => {
+const Message = ({m}) => {
   return(
     <li className={`message ${m.fromMe ? 'message--sent' : 'message--received'} `}>
-    {m.text} {m.member.clientData.username}
-  </li> 
+      {m.text} {m.member.clientData.username}
+    </li> 
   )
 }
 
-export default ChatCard
+export default Message

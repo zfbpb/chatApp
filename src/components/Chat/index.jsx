@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import ChatCard from '../Message';
+import Message from '../Message';
 import { v4 as uuid } from 'uuid';
 import './chat.scss'
 
@@ -14,7 +14,7 @@ const Chat = ({messages}) => {
     <ul className='chat'>
       {
         messages &&
-        messages.map((m) =><ChatCard key={uuid()} m={m}/>)
+        messages.map((m) =><Message key={uuid()} m={m}/>)
       }
       <div ref={bottomDiv} />
     </ul>
