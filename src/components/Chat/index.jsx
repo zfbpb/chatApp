@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
-import ChatCard from '../ChatCard';
+import ChatCard from '../Message';
 import { v4 as uuid } from 'uuid';
-import './Chat.scss'
+import './chat.scss'
 
 const Chat = ({messages}) => {
   const bottomDiv = useRef();

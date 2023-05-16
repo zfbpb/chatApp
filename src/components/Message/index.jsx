@@ -1,4 +1,4 @@
-import './ChatCard.scss'
+import './message.scss'
 
 const ChatCard = ({m}) => {
   return(
