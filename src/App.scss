@@ -1,14 +1,3 @@
-#root {
-  margin: 2rem auto;
-  text-align: center;
-  height: calc(100vh - 4rem);
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
 .app {
   display: flex;
   flex-direction: column;
@@ -18,40 +7,8 @@ ul {
   background-color: gray;
   height: 100%;
   overflow: hidden;
-}
 
-.messages {
-  padding-left: 17px;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
-  box-sizing: content-box; /* So the width will be 100% + 17px */
-} 
-
-.form {
-  padding: 1rem;
-  margin-top: auto;
-  background-color: red;
-}
-
-.message {
-  margin: 1rem 1rem 1rem auto;
-  border-radius: 1.125rem 1.125rem 0 1.125rem;
-  background: #333;
-  color: white;
-}
-
-.sent {
-  color: yellowgreen;
-  text-align: left;
-}
-
-.received {
-  color: pink;
-  text-align: right;
-}
-
-.mojaklasa {
-  border: 3px solid gold;
+  margin: 2rem auto;
+  text-align: center;
+  height: calc(100vh - 4rem);
 }
