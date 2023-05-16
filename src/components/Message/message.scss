@@ -1,25 +1,21 @@
 .message {
   margin: 1rem 1rem 1rem auto;
-  background: #333;
-  border: 1px solid gold;
+  display: flex;
+
+  span {
+    background-color: #333;
+    padding: 0.5rem;
+  }
 
   &--sent {
     color: yellowgreen;
-    text-align: left;
-    border-radius: 1.125rem 1.125rem 0 1.125rem;
-    padding: 0.5rem;
-    width: auto;
-    margin-left: auto;
-    display: flex;
   }
 
   &--received {
     color: pink;
-    text-align: left;
-    border-radius: 1.125rem 1.125rem 1.125rem 0;
-    padding: 0.5rem;
-    width: auto;
-    margin-left: auto;
-    display: flex;
+
+    span {
+      margin-left: auto;
+    }
   }
 }
