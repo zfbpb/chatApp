@@ -7,7 +7,7 @@ const Chat = ({messages}) => {
   const bottomDiv = useRef();
 
   useEffect(() => {
-    bottomDiv.current.scrollIntoView();
+    bottomDiv.current.scrollIntoView({ behavior: 'smooth' });
   }, [messages.length]);
 
   return(
