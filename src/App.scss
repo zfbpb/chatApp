@@ -3,12 +3,12 @@ $border-color: #345A63;
 .app {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 4rem); // form margin
+  height: calc(100vh - 4rem);
   max-width: 480px;
   width: 100vw;
   overflow: hidden;
   margin: 2rem auto;
-  border: 10px solid $border-color;
+  border: 0.8rem solid $border-color;
   box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   border-radius: 1rem;
