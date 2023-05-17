@@ -1,39 +1,34 @@
+$btn-color: #66D386; 
+$btn-color-hover: #1B434D;
+$input-background-color: #345A63;
+
 .chat-input {
+  background-color: #345A63;
+
   .form {
-    padding: 1rem;
-    margin-top: auto;
-    background-color: red;
+    display: flex;
+    height: 3rem;
+    margin: 1rem 0;
+
+    &__input {
+      flex-grow: 1;
+      border-radius: 0.3rem;
+      padding: 0 0.2rem;
+    }
   
     &__button {
-      border-radius: 8px;
-      border: 1px solid transparent;
-      padding: 0.6em 1.2em;
-      font-size: 1em;
-      font-weight: 500;
-      font-family: inherit;
-      background-color: #1a1a1a;
-      cursor: pointer;
-      transition: border-color 0.25s;
+      font-size: 1.2em;
+      background-color: $btn-color;
+      color: white;
+      border: 0;
+      border-radius: 0.3rem;
+      padding: 0 2rem;
+      margin-left: 0.8rem;
     }
+
     &__button:hover {
-      border-color: #646cff;
-    }
-    &__button:focus,
-    &__button:focus-visible {
-      outline: 4px auto -webkit-focus-ring-color;
+      background-color: $btn-color-hover;
     }
   }
-}
-
-
-
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
