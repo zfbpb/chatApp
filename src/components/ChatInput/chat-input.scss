@@ -1,33 +1,41 @@
+$btn-color: #66D386; 
+$btn-color-hover: #1B434D;
+$input-color: #CCD9DD;
+$input-background-color: #345A63;
+
 .chat-input {
+  background-color: #345A63;
+
   .form {
     display: flex;
-    padding: 1rem;
-    margin-top: auto;
-    background-color: white;
+    flex-direction: column;
 
     &__input {
       flex-grow: 1;
+      background-color: white;
+      min-height: 3rem;
+      padding: 0.5rem 1rem;
     }
   
     &__button {
-      border-radius: 8px;
       border: 1px solid transparent;
+      //border-radius: 0.5rem;
       padding: 0.6em 1.2em;
-      font-size: 1em;
+      font-size: 1.2em;
       font-weight: 500;
       font-family: inherit;
-      background-color: #1a1a1a;
+      background-color: $btn-color;
       cursor: pointer;
       transition: border-color 0.25s;
       color: white;
     }
     &__button:hover {
-      border-color: #646cff;
+      background-color: $btn-color-hover;
     }
-    &__button:focus,
-    &__button:focus-visible {
-      outline: 4px auto -webkit-focus-ring-color;
-    }
+    // &__button:focus,
+    // &__button:focus-visible {
+    //   outline: 4px auto -webkit-focus-ring-color;
+    // }
   }
 }
 

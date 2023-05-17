@@ -1,3 +1,5 @@
+$message-background-color: #333333;
+
 .message {
   $this: &;
 
@@ -7,28 +9,39 @@
   &__container {
     display: flex;
     flex-direction: column;
-    background-color: #333;
-    padding: 0.5rem;
+    background-color: $message-background-color;
+    padding: 0.6rem 1.2rem 0.3rem;
+    max-width: 70%;
+    //min-width: 30%;
+    //border-radius: 1rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   }
 
   &__sender {
-    color: white;
+    color: #999;
     font-size: 90%;
+  }
+
+  &__text {
+    color: white;
   }
 
   &--sent {
     #{$this}__text {
-      color: pink;
+      //color: white;
+    }
+    #{$this}__container {
+      margin-left: auto;
+      border-radius: 1rem 1rem 0 1rem;
     }
   }
 
   &--received {
-    #{$this}__container {
-      margin-left: auto;
-    }
-
     #{$this}__text {
-      color: yellowgreen;
+      //color: yellowgreen;
+    }
+    #{$this}__container {
+      border-radius: 1rem 1rem 1rem 0;
     }
   }
 }
