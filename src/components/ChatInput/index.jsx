@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import './chat-input.scss'
+import { useState } from "react";
+import "./chat-input.scss";
 
 const ChatInput = ({ onSendMessage }) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
 
   const onChange = (e) => {
     setText(e.target.value);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = (e) => { // nakon poziva setText(""), unutar funkcije onSendMessage vrijednost text još uvijek sadrži prethodno uneseni tekst, a ne prazan string jer je setText() asinkrona
     e.preventDefault();
-    setText('');
-    onSendMessage(text);
+    setText(""); // ažuriranje stanja se odgodi do sljedećeg renderiranja komponente
+    onSendMessage(text); 
   };
 
   return (

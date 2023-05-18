@@ -3,7 +3,7 @@ $btn-color-hover: #1B434D;
 $input-background-color: #345A63;
 
 .chat-input {
-  background-color: #345A63;
+  background-color: $input-background-color;
 
   .form {
     display: flex;
@@ -24,6 +24,7 @@ $input-background-color: #345A63;
       border-radius: 0.3rem;
       padding: 0 2rem;
       margin-left: 0.8rem;
+      cursor: pointer;
     }
 
     &__button:hover {

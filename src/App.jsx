@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react'
-import randomColor from './util/randomColor'
-import randomName from './util/randomName'
-import Chat from './components/Chat';
-import ChatInput from './components/ChatInput';
-import './App.scss'
+import { useState, useEffect } from "react";
+import randomColor from "./util/randomColor";
+import randomName from "./util/randomName";
+import Chat from "./components/Chat";
+import ChatInput from "./components/ChatInput";
+import "./App.scss";
 
 const App = () => {
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([]);
 
   const [member, setMember] = useState({
     username: randomName(),
     color: randomColor(),
-  })
+  });
 
   const [drone, setDrone] = useState(null);
 
@@ -20,7 +20,7 @@ const App = () => {
       data: member,
     });
 
-    setDrone(newDrone)
+    setDrone(newDrone);
   }, []);
 
   useEffect(() => {
@@ -38,29 +38,32 @@ const App = () => {
       });
 
       room.on("data", (message, member) => {
-        const newMessage = { 
-          text: message, 
-          member: member
+        const newMessage = {
+          text: message,
+          member: member,
         };
-        newMessage.fromMe = (member && member.id === drone.clientId) ? true : false;
-        setMessages(prevMessages => [...prevMessages, newMessage]);
+        newMessage.fromMe =
+          member && member.id === drone.clientId ? true : false;
+        setMessages((prevMessages) => [...prevMessages, newMessage]);
       });
     }
   }, [drone]);
 
   const onSendMessage = (message) => {
-    drone.publish({
-      room: "observable-room",
-      message
-    });
-  }
+    if (message) {
+      drone.publish({
+        room: "observable-room",
+        message,
+      });
+    } // else console.log("Empty string not allowed");
+  };
 
   return (
-    <div className='app'>
-      <Chat messages={messages}/>
+    <div className="app">
+      <Chat messages={messages} />
       <ChatInput onSendMessage={onSendMessage} />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
