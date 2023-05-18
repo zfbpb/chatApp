@@ -55,7 +55,7 @@ const App = () => {
         room: "observable-room",
         message,
       });
-    } // else console.log("Empty string not alowed");
+    } // else console.log("Empty string not allowed");
   };
 
   return (
