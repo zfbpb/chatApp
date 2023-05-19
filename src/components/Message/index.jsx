@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './message.scss';
 
 const Message = ({m: { fromMe, member, text }}) => {
@@ -18,5 +19,18 @@ const Message = ({m: { fromMe, member, text }}) => {
     </li>
   )
 }
+
+Message.propTypes = {
+  m: PropTypes.shape({
+    fromMe: PropTypes.bool.isRequired,
+    member: PropTypes.shape({
+      clientData: PropTypes.shape({
+        color: PropTypes.string.isRequired,
+        username: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    text: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default Message

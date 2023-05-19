@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
 import Message from "../Message";
 import { v4 as uuid } from "uuid";
+import PropTypes from 'prop-types';
 import "./chat.scss";
 
 const Chat = ({ messages }) => {
@@ -16,6 +17,10 @@ const Chat = ({ messages }) => {
       <div ref={bottomDiv} />
     </ul>
   );
+};
+
+Chat.propTypes = {
+
 };
 
 export default Chat;
