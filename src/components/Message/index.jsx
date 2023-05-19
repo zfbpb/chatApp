@@ -10,12 +10,14 @@ const Message = ({m: { fromMe, member, text }, checked}) => {
   const usernameColor = member.clientData.color;
   //const borderStyle = `1rem solid ${usernameColor}`;
   const borderStyle = `1rem solid ${checked ? usernameColor : 'transparent'}`;
+  const circleStyle = `${checked ? 'defalut' : 'none'}`;
+
 
   return(
     <li className={messageClasses}>
       <div className={containerClasses} style={{ borderBottom: borderStyle }}>
-        <span className={senderClasses}>{member.clientData.username}</span>
-        <span className={textClasses}>{text}</span>
+        <div><span className='circle' style={{ display: circleStyle }}></span><span className={senderClasses}>{member.clientData.username}</span></div>
+        <div className={textClasses}>{text}</div>
       </div>
     </li>
   )
