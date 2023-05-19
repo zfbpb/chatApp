@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+  height: 3rem;
+  min-height: 3rem;
+
+  * {
+    margin: auto 1rem auto auto;
+  }
+}

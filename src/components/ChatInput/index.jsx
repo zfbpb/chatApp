@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 import "./chat-input.scss";
 
 const ChatInput = ({ onSendMessage }) => {
@@ -11,7 +12,7 @@ const ChatInput = ({ onSendMessage }) => {
   const onSubmit = (e) => { // nakon poziva setText(""), unutar funkcije onSendMessage vrijednost text još uvijek sadrži prethodno uneseni tekst, a ne prazan string jer je setText() asinkrona
     e.preventDefault();
     setText(""); // ažuriranje stanja se odgodi do sljedećeg renderiranja komponente
-    onSendMessage(text); 
+    onSendMessage(text);
   };
 
   return (
@@ -29,6 +30,10 @@ const ChatInput = ({ onSendMessage }) => {
       </form>
     </div>
   );
+};
+
+ChatInput.propTypes = {
+  onSendMessage: PropTypes.func.isRequired,
 };
 
 export default ChatInput;

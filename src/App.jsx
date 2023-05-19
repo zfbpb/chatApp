@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import randomColor from "./util/randomColor";
 import randomName from "./util/randomName";
+import Header from "./components/Header";
 import Chat from "./components/Chat";
 import ChatInput from "./components/ChatInput";
 import "./App.scss";
@@ -49,6 +50,13 @@ const App = () => {
     }
   }, [drone]);
 
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (val) => {
+    setChecked(val)
+  }
+
+
   const onSendMessage = (message) => {
     if (message) {
       drone.publish({
@@ -60,7 +68,8 @@ const App = () => {
 
   return (
     <div className="app">
-      <Chat messages={messages} />
+      <Header checked={checked} handleChange={handleChange} />
+      <Chat messages={messages} checked={checked} />
       <ChatInput onSendMessage={onSendMessage} />
     </div>
   );
