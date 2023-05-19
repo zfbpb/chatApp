@@ -1,6 +1,5 @@
 // https://www.npmjs.com/package/react-switch
 
-import { useState } from 'react';
 import ReactSwitch from 'react-switch';
 
 const ToggleSwitch = ({checked, handleChange}) => {

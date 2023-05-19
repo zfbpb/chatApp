@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import './message.scss';
 
-const Message = ({m: { fromMe, member, text }}) => {
+const Message = ({m: { fromMe, member, text }, checked}) => {
   //const {text, member, fromMe} = m;
   const messageClasses = `message message--${fromMe ? 'sent' : 'received'}`;
   const containerClasses = 'message__container';
   const senderClasses = 'message__sender';
   const textClasses = 'message__text';
   const usernameColor = member.clientData.color;
-  const borderStyle = `1rem solid ${usernameColor}`;
+  //const borderStyle = `1rem solid ${usernameColor}`;
+  const borderStyle = `1rem solid ${checked ? usernameColor : 'transparent'}`;
 
   return(
     <li className={messageClasses}>

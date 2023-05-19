@@ -69,7 +69,7 @@ const App = () => {
   return (
     <div className="app">
       <Header checked={checked} handleChange={handleChange} />
-      <Chat messages={messages} />
+      <Chat messages={messages} checked={checked} />
       <ChatInput onSendMessage={onSendMessage} />
     </div>
   );
