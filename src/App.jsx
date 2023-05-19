@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import randomColor from "./util/randomColor";
 import randomName from "./util/randomName";
+import Header from "./components/Header";
 import Chat from "./components/Chat";
 import ChatInput from "./components/ChatInput";
 import "./App.scss";
@@ -60,6 +61,7 @@ const App = () => {
 
   return (
     <div className="app">
+      <Header />
       <Chat messages={messages} />
       <ChatInput onSendMessage={onSendMessage} />
     </div>
