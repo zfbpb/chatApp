@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import Message from "../Message";
 import { v4 as uuid } from "uuid";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./chat.scss";
 
 const Chat = ({ messages, checked }) => {
@@ -13,8 +13,9 @@ const Chat = ({ messages, checked }) => {
 
   return (
     <ul className="chat">
-      {messages && messages.map((m) => <Message key={uuid()} m={m} checked={checked} />)}
-      <li ref={bottom} style={{ visibility: 'hidden' }}></li>
+      {messages &&
+        messages.map((m) => <Message key={uuid()} m={m} checked={checked} />)}
+      <li ref={bottom} style={{ visibility: "hidden" }}></li>
     </ul>
   );
 };

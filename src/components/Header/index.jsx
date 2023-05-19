@@ -1,12 +1,12 @@
-import ToggleSwitch from "../ToggleSwitch"
-import './header.scss'
+import ToggleSwitch from "../ToggleSwitch";
+import "./header.scss";
 
-const Header = ({checked, handleChange}) => {
-  return(
+const Header = ({ checked, handleChange }) => {
+  return (
     <div className="header">
-      <ToggleSwitch checked={checked} handleChange={handleChange}/>
+      <ToggleSwitch checked={checked} handleChange={handleChange} />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

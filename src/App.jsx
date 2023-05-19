@@ -52,8 +52,8 @@ const App = () => {
     }
   }, [drone]);
 
-  const handleChange = (val) => {
-    setChecked(val)
+  const handleChange = () => {
+    setChecked(!checked)
   }
 
   const onSendMessage = (message) => {
