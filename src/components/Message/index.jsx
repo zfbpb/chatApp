@@ -7,16 +7,16 @@ const Message = ({m: { fromMe, member, text }, checked}) => {
   const containerClasses = 'message__container';
   const senderClasses = 'message__sender';
   const textClasses = 'message__text';
+  const circleClass = 'circle';
   const usernameColor = member.clientData.color;
-  //const borderStyle = `1rem solid ${usernameColor}`;
-  const borderStyle = `1rem solid ${checked ? usernameColor : 'transparent'}`;
-  const circleStyle = `${checked ? 'defalut' : 'none'}`;
+  const borderStyle = `0.5rem solid ${checked ? usernameColor : 'transparent'}`;
+  const circleStyle = `${checked ? 'none' : 'default'}`;
 
 
   return(
     <li className={messageClasses}>
       <div className={containerClasses} style={{ borderBottom: borderStyle }}>
-        <div><span className='circle' style={{ display: circleStyle }}></span><span className={senderClasses}>{member.clientData.username}</span></div>
+        <div><span className={circleClass} style={{ display: circleStyle, backgroundColor: usernameColor }}></span><span className={senderClasses}>{member.clientData.username}</span></div>
         <div className={textClasses}>{text}</div>
       </div>
     </li>
