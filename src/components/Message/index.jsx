@@ -1,27 +1,32 @@
-import PropTypes from 'prop-types';
-import './message.scss';
+import PropTypes from "prop-types";
+import "./message.scss";
 
-const Message = ({m: { fromMe, member, text }, checked}) => {
+const Message = ({ m: { fromMe, member, text }, checked }) => {
   //const {text, member, fromMe} = m;
-  const messageClasses = `message message--${fromMe ? 'sent' : 'received'}`;
-  const containerClasses = 'message__container';
-  const senderClasses = 'message__sender';
-  const textClasses = 'message__text';
-  const circleClass = 'circle';
+  const messageClasses = `message message--${fromMe ? "sent" : "received"}`;
+  const containerClasses = "message__container";
+  const senderClasses = "message__sender";
+  const textClasses = "message__text";
+  const circleClass = "circle";
   const usernameColor = member.clientData.color;
-  const borderStyle = `0.5rem solid ${checked ? usernameColor : 'transparent'}`;
-  const circleStyle = `${checked ? 'none' : 'default'}`;
+  const borderStyle = `0.5rem solid ${checked ? usernameColor : "transparent"}`;
+  const circleStyle = `${checked ? "none" : "default"}`;
 
-
-  return(
+  return (
     <li className={messageClasses}>
       <div className={containerClasses} style={{ borderBottom: borderStyle }}>
-        <div><span className={circleClass} style={{ display: circleStyle, backgroundColor: usernameColor }}></span><span className={senderClasses}>{member.clientData.username}</span></div>
+        <div>
+          <span
+            className={circleClass}
+            style={{ display: circleStyle, backgroundColor: usernameColor }}
+          ></span>
+          <span className={senderClasses}>{member.clientData.username}</span>
+        </div>
         <div className={textClasses}>{text}</div>
       </div>
     </li>
-  )
-}
+  );
+};
 
 Message.propTypes = {
   m: PropTypes.shape({
@@ -34,6 +39,7 @@ Message.propTypes = {
     }).isRequired,
     text: PropTypes.string.isRequired,
   }).isRequired,
+  checked: PropTypes.bool.isRequired,
 };
 
-export default Message
+export default Message;

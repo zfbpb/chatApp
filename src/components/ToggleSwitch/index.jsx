@@ -1,8 +1,8 @@
 // https://www.npmjs.com/package/react-switch
 
-import ReactSwitch from 'react-switch';
+import ReactSwitch from "react-switch";
 
-const ToggleSwitch = ({checked, handleChange}) => {
+const ToggleSwitch = ({ checked, handleChange }) => {
   return (
     <ReactSwitch
       checked={checked}
@@ -19,6 +19,6 @@ const ToggleSwitch = ({checked, handleChange}) => {
       width={48}
     />
   );
-}
+};
 
 export default ToggleSwitch;
