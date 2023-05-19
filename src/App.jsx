@@ -14,6 +14,8 @@ const App = () => {
     color: randomColor(),
   });
 
+  const [checked, setChecked] = useState(true);
+
   const [drone, setDrone] = useState(null);
 
   useEffect(() => {
@@ -50,12 +52,9 @@ const App = () => {
     }
   }, [drone]);
 
-  const [checked, setChecked] = useState(true);
-
   const handleChange = (val) => {
     setChecked(val)
   }
-
 
   const onSendMessage = (message) => {
     if (message) {
