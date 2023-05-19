@@ -50,6 +50,13 @@ const App = () => {
     }
   }, [drone]);
 
+  const [checked, setChecked] = useState(true);
+
+  const handleChange = (val) => {
+    setChecked(val)
+  }
+
+
   const onSendMessage = (message) => {
     if (message) {
       drone.publish({
@@ -61,7 +68,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header />
+      <Header checked={checked} handleChange={handleChange} />
       <Chat messages={messages} />
       <ChatInput onSendMessage={onSendMessage} />
     </div>
