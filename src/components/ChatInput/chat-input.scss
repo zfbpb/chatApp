@@ -4,20 +4,22 @@ $input-background-color: #345A63;
 
 .chat-input {
   background-color: $input-background-color;
-
+ 
   .form {
     display: flex;
     height: 3rem;
     margin: 1rem 0;
+    width: auto;
 
     &__input {
-      flex-grow: 1;
+      margin-right: auto;
+      width: 100%;
       border-radius: 0.3rem;
       padding: 0 0.2rem;
     }
   
     &__button {
-      font-size: 1.2em;
+      font-size: 1.2rem;
       background-color: $btn-color;
       color: white;
       border: 0;
