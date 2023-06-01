@@ -57,7 +57,7 @@ const App = () => {
   }
 
   const onSendMessage = (message) => {
-    if (message) {
+    if (message.trim()) {
       drone.publish({
         room: "observable-room",
         message,
